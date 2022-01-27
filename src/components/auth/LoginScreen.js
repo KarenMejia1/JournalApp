@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { login } from '../../actions/auth'
+import { login, startGoogleLogin, startLoginEmailPassword } from '../../actions/auth'
 import { useForm } from '../../hooks/useForm'
 
 export const LoginScreen = () => {
@@ -19,7 +19,11 @@ export const LoginScreen = () => {
     const handleLogin = (e) => {
         //Evitar la propagacion del formulario
         e.preventDefault(); //Si lo quito hace refresh
-        dispatch( login(123454, 'Mep') ) 
+        dispatch( startLoginEmailPassword(email, password) ) 
+    }
+
+    const hanldeGoogleLogin = () => {
+        dispatch(startGoogleLogin());
     }
 
     return (
@@ -52,7 +56,10 @@ export const LoginScreen = () => {
                     Login
                 </button>
 
-                <div className='auth__social-networks'>
+                <div 
+                className='auth__social-networks'
+                onClick={hanldeGoogleLogin}
+                >
                     <p>Login with social Network</p>
                     <div
                         className="google-btn">
