@@ -1,10 +1,13 @@
 import React from 'react'
-import { AuthRouter } from '../../routers/AuthRouter'
+import { Sidebar } from './Siderbar'
 
 export const JournalScreen = () => {
     return(
-        <>
-            <h1>JournalScreen</h1>
-        </>
+        <div className='journal__main-content'>
+            <Sidebar/>
+            <main>
+                <h1>Main Content</h1>
+            </main>
+        </div>
     )
 } 
